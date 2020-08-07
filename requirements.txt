@@ -1,2 +1,4 @@
 wheel
 selenium
+requests
+requests-toolbelt
