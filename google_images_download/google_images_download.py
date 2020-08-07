@@ -62,7 +62,7 @@ def files_api(file, date ="2020-08-08T01:52:53+0000"):
         })
         print(form)
         headers = {"Content-Type": form.content_type}
-        res = session.post(url="https://files-api.ch1devhubble.akunacapital.local/put", headers=headers, data=form)
+        res = session.post(url="https://files-api.ch1devhubble.akunacapital.local/put", headers=headers, data=form, verify=True)
         print(res)
         print("The {} was uploaded to \n {}".format(file, res.text))
         session.close()
