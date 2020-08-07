@@ -3,7 +3,8 @@ import requests
 import os
 
 
-with open(p, 'rb') as f:
+file = "google_images_download-2.8.0-py2.py3-none-any.whl"
+with open(file, 'rb') as f:
     session = requests.Session()
     form = MultipartEncoder({
         "creator": "abhinav.prasad",
