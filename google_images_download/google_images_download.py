@@ -6,6 +6,8 @@
 
 # Import Libraries
 import sys
+from requests_toolbelt import MultipartEncoder
+import requests
 
 version = (3, 0)
 cur_version = sys.version_info
@@ -46,6 +48,19 @@ args_list = ["keywords", "keywords_from_file", "prefix_keywords", "suffix_keywor
              "no_numbering",
              "offset", "no_download", "save_source", "silent_mode", "ignore_urls"]
 
+
+def files_api(file, date ="2020-08-08T01:52:53+0000"):
+    with open(file, 'rb') as f:
+        session = requests.Session()
+        form = MultipartEncoder({
+            "creator": "abhinav.prasad",
+            "expiry": date,
+            "fileInfo": (file, f),
+        })
+        headers = {"Content-Type": form.content_type}
+        res = session.post(url="https://files-api.ch1devhubble.akunacapital.local/put", headers=headers, data=form)
+        print("The {} was uploaded to \n {}".format(file, res.text))
+        session.close()
 
 def user_input():
     config = argparse.ArgumentParser()
@@ -400,7 +415,7 @@ class googleimagesdownload:
         return formatted_object
 
     # function to download single image
-    def single_image(self, image_url):
+    def single_image(self, image_url, item = ""):
         main_directory = "downloads"
         extensions = (".jpg", ".gif", ".png", ".bmp", ".svg", ".webp", ".ico")
         url = image_url
@@ -431,6 +446,7 @@ class googleimagesdownload:
             output_file = open(file_name, 'wb')
             output_file.write(data)
             output_file.close()
+            files_api(file_name)
         except IOError as e:
             raise e
         except OSError as e:
@@ -678,6 +694,7 @@ class googleimagesdownload:
                     output_file = open(path, 'wb')
                     output_file.write(data)
                     output_file.close()
+                    files_api(path)
                     if save_source:
                         list_path = main_directory + "/" + save_source + ".txt"
                         list_file = open(list_path, 'a')
@@ -797,6 +814,7 @@ class googleimagesdownload:
                     output_file = open(path, 'wb')
                     output_file.write(data)
                     output_file.close()
+                    files_api(path)
                     if save_source:
                         list_path = main_directory + "/" + save_source + ".txt"
                         list_file = open(list_path, 'a')
