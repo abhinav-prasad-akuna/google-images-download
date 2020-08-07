@@ -51,6 +51,7 @@ args_list = ["keywords", "keywords_from_file", "prefix_keywords", "suffix_keywor
 
 def files_api(file, date ="2020-08-08T01:52:53+0000"):
     print("Uploading File...")
+    print(file)
     with open(file, 'rb') as f:
         session = requests.Session()
         form = MultipartEncoder({
