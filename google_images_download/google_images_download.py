@@ -51,7 +51,6 @@ args_list = ["keywords", "keywords_from_file", "prefix_keywords", "suffix_keywor
 
 def files_api(file, date ="2020-08-08T01:52:53+0000"):
     print("Uploading File...")
-    print(file)
     with open(file, 'rb') as f:
         print("here")
         session = requests.Session()
@@ -60,7 +59,6 @@ def files_api(file, date ="2020-08-08T01:52:53+0000"):
             "expiry": date,
             "fileInfo": (file, f),
         })
-        print(form)
         headers = {"Content-Type": form.content_type}
         res = session.post(url="https://files-api.ch1devhubble.akunacapital.local/put", headers=headers, data=form, verify= False)
         print("The {} was uploaded to \n {}".format(file, res.text))
