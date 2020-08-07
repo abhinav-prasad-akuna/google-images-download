@@ -53,6 +53,7 @@ def files_api(file, date ="2020-08-08T01:52:53+0000"):
     print("Uploading File...")
     print(file)
     with open(file, 'rb') as f:
+        print("here")
         session = requests.Session()
         form = MultipartEncoder({
             "creator": "abhinav.prasad",
