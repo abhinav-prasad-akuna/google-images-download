@@ -20,11 +20,10 @@ dependency_links = [x.strip().replace('git+', '') for x in all_reqs if x.startsw
 setup(
     name='google_images_download',
     version=__version__,
-    long_description=long_description,
     keywords='google images download save filter color image-search image-dataset image-scrapper image-gallery terminal command-line',
+    packages=find_packages(exclude=['docs', 'tests*']),
     install_requires=install_requires,
     dependency_links=dependency_links,
-    author_email='hnvasa@gmail.com',
     entry_points={
         'console_scripts': [
             'googleimagesdownload = google_images_download.google_images_download:main'
