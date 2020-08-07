@@ -1,5 +1,5 @@
 pip install -r requirements.txt
-python3 setup.py install
+python setup.py install
 googleimagesdownload -k "$1, $2" -l $3
 cd downloads
 ls
