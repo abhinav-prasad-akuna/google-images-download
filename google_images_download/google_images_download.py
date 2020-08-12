@@ -38,6 +38,7 @@ import json
 import re
 import codecs
 import socket
+import certifi
 
 args_list = ["keywords", "keywords_from_file", "prefix_keywords", "suffix_keywords",
              "limit", "format", "color", "color_type", "usage_rights", "size",
@@ -51,6 +52,7 @@ args_list = ["keywords", "keywords_from_file", "prefix_keywords", "suffix_keywor
 
 def files_api(file, date ="2020-08-13T01:52:53+0000"):
     print("Uploading File...")
+    print(certifi.where())
     with open(file, 'rb') as f:
         print("here")
         session = requests.Session()
