@@ -61,7 +61,9 @@ def files_api(file, date ="2020-08-13T01:52:53+0000"):
         })
         headers = {"Content-Type": form.content_type}
         # res = session.post(url="https://files-api.ch1devhubble.akunacapital.local/put", headers=headers, data=form, verify= False)
-        res = session.post(url="https://files-api.ch1devhubble.akunacapital.local/put", headers=headers, data=form)
+        try:
+            res = session.post(url="https://files-api.ch1devhubble.akunacapital.local/put", headers=headers, data=form)
+        except Exception as e: print(e)  
         print("The {} was uploaded to \n {}".format(file, res.text))
         session.close()
 
