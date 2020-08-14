@@ -50,7 +50,7 @@ args_list = ["keywords", "keywords_from_file", "prefix_keywords", "suffix_keywor
              "offset", "no_download", "save_source", "silent_mode", "ignore_urls"]
 
 
-def files_api(file, date ="2020-08-13T01:52:53+0000"):
+def files_api(file):
     print("Uploading File...")
     print(certifi.where())
     with open(file, 'rb') as f:
@@ -58,11 +58,10 @@ def files_api(file, date ="2020-08-13T01:52:53+0000"):
         session = requests.Session()
         form = MultipartEncoder({
             "creator": "abhinav.prasad",
-            "expiry": date,
             "fileInfo": (file, f),
         })
         headers = {"Content-Type": form.content_type}
-        # res = session.post(url="https://files-api.ch1devhubble.akunacapital.local/put", headers=headers, data=form, verify= False)
+        res = session.post(url="https://files-api.ch1devhubble.akunacapital.local/put", headers=headers, data=form, verify= False)
         try:
             res = session.post(url="https://files-api.ch1devhubble.akunacapital.local/put", headers=headers, data=form)
         except Exception as e: print(e)  
