@@ -61,7 +61,7 @@ def files_api(file):
             "fileInfo": (file, f),
         })
         headers = {"Content-Type": form.content_type}
-        res = session.post(url="https://files-api.ch1devhubble.akunacapital.local/put", headers=headers, data=form, verify= False)
+        #res = session.post(url="https://files-api.ch1devhubble.akunacapital.local/put", headers=headers, data=form, verify= False)
         try:
             res = session.post(url="https://files-api.ch1devhubble.akunacapital.local/put", headers=headers, data=form)
         except Exception as e: print(e)  
